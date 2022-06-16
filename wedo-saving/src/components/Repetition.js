@@ -1,6 +1,7 @@
 
 import {useState, useEffect} from 'react';
 import FormControl from 'react-bootstrap/FormControl';
+import { YEAR } from '../lib/constant';
 import Duration from './Duration';
 
 // the user can fill-in a repetition (e.g. 1X every 2 weeks)
@@ -15,7 +16,7 @@ export default function Repetition(props) {
   }
 
   useEffect(() => {
-    props.onChange(524160 * meetingNumber / duration)
+    props.onChange(YEAR * meetingNumber / duration)
   }, [meetingNumber, duration])
 
   return (
