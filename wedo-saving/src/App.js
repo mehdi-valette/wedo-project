@@ -13,18 +13,14 @@ import { BlockGraph } from './components/BlockGraph';
 function App() {
 
   const [occurrencePerYear, setOccurrencePerYear] = useState(1);
-  const [preparationDuration, setPreparationDuration] = useState(0);
-  const [preparationPricePerMinute, setPreparationPricePerMinute] = useState(0);
   const [meetingPriceFix, setMeetingPriceFix] = useState(0);
   const [meetingDuration, setMeetingDuration] = useState(0);
   const [meetingPricePerMinute, setMeetingPricePerMinute] = useState(0);
-  const [minuteDuration, setMinuteDuration] = useState(0);
-  const [minutePricePerMinute, setMinutePricePerMinute] = useState(0);
 
   const savingPerYear = (meetingPriceFix + meetingPricePerMinute * meetingDuration) * occurrencePerYear * 0.3;
 
   return (
-    <div style={{width:'30em'}}>
+    <div style={{maxWidth:'30em'}}>
     <Accordion alwaysOpen defaultActiveKey={["0", "1", "2", "3"]}>
       <Block eventKey="0" title={`Duration and price of the meeting (${minuteToHour(meetingDuration)}, ${moneyFormat(meetingPriceFix)})`}>
         <MeetingDurationPrice

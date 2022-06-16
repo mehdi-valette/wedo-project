@@ -8,7 +8,7 @@ export function Graph(props) {
   
   return (
     <svg viewBox="0 0 1010 65">
-      // bar of price
+      {/* bar of price */}
       <rect 
         x="5"
         y="10" 
@@ -16,7 +16,7 @@ export function Graph(props) {
         height="50" 
         style={{fill: color,strokeWidth:5,stroke:'rgb(0,0,0)'}}
       />
-      // text of price
+      {/* text of price */}
       <text 
         x="10" 
         y="45" 
@@ -25,8 +25,8 @@ export function Graph(props) {
       >
         {price}.- CHF
       </text>
+      {/* show the savings if there are any */}
       {
-        // show the savings if there are any
         props.saving !== null && 
         <g>
           // bar of savings
@@ -37,7 +37,7 @@ export function Graph(props) {
             height="50" 
             style={{fill:'rgb(255,255,255)',strokeWidth:5,stroke:'rgb(0,0,0)'}}
           />
-          // text of savings
+          {/* text of savings */}
           <text 
             x={1010 - widthSaving} 
             y="45" 
