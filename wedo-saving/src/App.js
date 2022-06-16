@@ -4,6 +4,10 @@ import Accordion from 'react-bootstrap/Accordion';
 
 import MeetingDurationPrice from './components/BlockMeetingDurationPrice';
 import Block from './components/Block';
+import BlockFrequency from './components/BlockFrequency';
+import { minuteToHour } from './lib/duration';
+import { moneyFormat } from './lib/money';
+import BlockParticipant from './components/BlockParticipant';
 
 function App() {
 
@@ -17,14 +21,27 @@ function App() {
   const [minutePricePerMinute, setMinutePricePerMinute] = useState(0);
 
   return (
-    <div style={{width:' 20em'}}>
-    <Accordion>
-      <Block title="Duration and price of the meeting (1h30, 20.-)"><MeetingDurationPrice
+    <div style={{width:'30em'}}>
+    <Accordion alwaysOpen defaultActiveKey={["0", "1"]}>
+      <Block eventKey="0" title={`Duration and price of the meeting (${minuteToHour(meetingDuration)}, ${moneyFormat(meetingPriceFix)})`}>
+        <MeetingDurationPrice
             duration={meetingDuration}
             price={meetingPriceFix}
             onDurationChange={setMeetingDuration}
             onPriceChange={setMeetingPriceFix}
           />
+      </Block>
+      <Block eventKey="1" title={`Frequency of the meeting (${occurrencePerYear}/year)`}>
+        <BlockFrequency
+          onOccurrencePerYearChange={setOccurrencePerYear}
+          occurrencePerYear={occurrencePerYear}
+        />
+      </Block>
+      <Block eventKey="2" title={`Participants (90.-/meeting)`}>
+        <BlockParticipant
+          occurrencePerYear={occurrencePerYear}
+          onPriceChange={setMeetingPricePerMinute}
+        />
       </Block>
     </Accordion>
     </div>
