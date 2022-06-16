@@ -20,7 +20,7 @@ function App() {
   const savingPerYear = (meetingPriceFix + meetingPricePerMinute * meetingDuration) * occurrencePerYear * 0.3;
 
   return (
-    <div style={{maxWidth:'30em'}}>
+    <div style={{maxWidth:'30em', margin: 'auto'}}>
     <Accordion alwaysOpen defaultActiveKey={["0", "1", "2", "3"]}>
       <Block eventKey="0" title={`Duration and price of the meeting (${minuteToHour(meetingDuration)}, ${moneyFormat(meetingPriceFix)})`}>
         <MeetingDurationPrice
