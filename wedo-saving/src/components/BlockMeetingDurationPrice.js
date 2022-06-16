@@ -1,6 +1,5 @@
 
 import FormControl from 'react-bootstrap/FormControl';
-import Alert from 'react-bootstrap/Alert';
 
 import Duration from './Duration';
 import {minuteToHour} from '../lib/duration';
@@ -35,7 +34,7 @@ export default function Block(props) {
           value={props.price}
         />
       </div>
-      <p class="mt-3">
+      <p className="mt-3">
         That's {minuteToHour(props.duration)} and&nbsp;
         <span style={{whiteSpace: 'nowrap'}}>{moneyFormat(props.price)}</span>&nbsp;
         CHF
