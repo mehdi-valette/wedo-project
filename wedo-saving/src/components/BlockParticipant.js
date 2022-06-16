@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { moneyFormat } from '../lib/money';
 import SalaryPerMinute from './SalaryPerMinute';
 
 export default function BlockParticipant(props) {
 
   const [meetingPricePerMinute, setMeetingPricePerMinute] = useState(0);
+
+  useEffect(() => {
+    props.onPriceChange(meetingPricePerMinute)
+  }, [meetingPricePerMinute])
 
   return (
     <div>
@@ -16,7 +20,8 @@ export default function BlockParticipant(props) {
       </p>
 
       <SalaryPerMinute
-        withMeeting onChange={setMeetingPricePerMinute}
+        withMeeting
+        onChange={setMeetingPricePerMinute}
         occurrencePerYear={props.occurrencePerYear}
       />
 

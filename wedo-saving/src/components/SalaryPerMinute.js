@@ -8,7 +8,7 @@ import DurationSelect from './DurationSelect';
 export default function SalaryPerMinute(props) {
 
   const [salary, setSalary] = useState(0);
-  const [unit, setUnit] = useState(YEAR);
+  const [unit, setUnit] = useState(MINUTE);
   const [people, setPeople] = useState(0);
   const [meeting, setMeeting] = useState(0);
 
@@ -57,8 +57,6 @@ export default function SalaryPerMinute(props) {
 
     // set how many meetings will be attended
     let meetingAttended = props.withMeeting ? meeting : props.occurrencePerYear;
-
-    console.log(unit, salaryPerMinute, salary, people, meetingAttended)
 
     // salary per minute, by the number of people
     // proportionally to the number of meetings they can attend per year
