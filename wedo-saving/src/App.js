@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div style={{width:'30em'}}>
-    <Accordion alwaysOpen defaultActiveKey={["0", "1"]}>
+    <Accordion alwaysOpen defaultActiveKey={["0", "1", "2"]}>
       <Block eventKey="0" title={`Duration and price of the meeting (${minuteToHour(meetingDuration)}, ${moneyFormat(meetingPriceFix)})`}>
         <MeetingDurationPrice
             duration={meetingDuration}
@@ -40,6 +40,7 @@ function App() {
       <Block eventKey="2" title={`Participants (90.-/meeting)`}>
         <BlockParticipant
           occurrencePerYear={occurrencePerYear}
+          meetingDuration={meetingDuration}
           onPriceChange={setMeetingPricePerMinute}
         />
       </Block>
