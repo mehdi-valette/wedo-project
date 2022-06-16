@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  app:
+    image: node:18-alpine
+    container_name: wedo-project
+    user: node
+    working_dir: /home/node/wedo-saving
+    ports:
+     - 3000:3000
+    volumes: 
+      - .:/home/node
+    command: tail -f /dev/null
