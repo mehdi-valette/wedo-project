@@ -8,6 +8,7 @@ import BlockFrequency from './components/BlockFrequency';
 import { minuteToHour } from './lib/duration';
 import { moneyFormat } from './lib/money';
 import BlockParticipant from './components/BlockParticipant';
+import { BlockGraph } from './components/BlockGraph';
 
 function App() {
 
@@ -20,9 +21,11 @@ function App() {
   const [minuteDuration, setMinuteDuration] = useState(0);
   const [minutePricePerMinute, setMinutePricePerMinute] = useState(0);
 
+  const savingPerYear = (meetingPriceFix + meetingPricePerMinute * meetingDuration) * occurrencePerYear * 0.3;
+
   return (
     <div style={{width:'30em'}}>
-    <Accordion alwaysOpen defaultActiveKey={["0", "1", "2"]}>
+    <Accordion alwaysOpen defaultActiveKey={["0", "1", "2", "3"]}>
       <Block eventKey="0" title={`Duration and price of the meeting (${minuteToHour(meetingDuration)}, ${moneyFormat(meetingPriceFix)})`}>
         <MeetingDurationPrice
             duration={meetingDuration}
@@ -37,11 +40,19 @@ function App() {
           occurrencePerYear={occurrencePerYear}
         />
       </Block>
-      <Block eventKey="2" title={`Participants (90.-/meeting)`}>
+      <Block eventKey="2" title={`Participants (${moneyFormat(meetingDuration * meetingPricePerMinute)}/meeting)`}>
         <BlockParticipant
           occurrencePerYear={occurrencePerYear}
           meetingDuration={meetingDuration}
           onPriceChange={setMeetingPricePerMinute}
+        />
+      </Block>
+      <Block eventKey="3" title={`Estimation of savings (30% | ${moneyFormat(savingPerYear)}/year)`}>
+        <BlockGraph
+          occurrencePerYear={occurrencePerYear}
+          meetingPriceFix={meetingPriceFix}
+          meetingPricePerMinute={meetingPricePerMinute}
+          meetingDuration={meetingDuration}
         />
       </Block>
     </Accordion>
